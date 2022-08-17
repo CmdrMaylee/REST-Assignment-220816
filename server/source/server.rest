@@ -1,16 +1,24 @@
-### Get page
-GET http://localhost:3000/
+### GET welcome screen
+GET http://localhost:3000/api/welcome
+
+### GET visitor count
+GET http://localhost:3000/api/visit
 
 ### GET All
-GET http://localhost:3000/api
+GET http://localhost:3000/api/getPokedex
 
 ### GET specific
 GET http://localhost:3000/api/1
 
 ### POST something
-POST http://localhost:3000/api
+POST http://localhost:3000/api/addPokemon
 Content-Type: application/json
 
 {
-    "name": "Stuffaroonies"
+    "id": "134",
+    "name": "Vaporeon",
+    "Type": "Water"
 }
+
+### GET add demo data
+GET http://localhost:3000/api/demodata
