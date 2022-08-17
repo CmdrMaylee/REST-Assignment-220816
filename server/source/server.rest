@@ -1,0 +1,16 @@
+### Get page
+GET http://localhost:3000/
+
+### GET All
+GET http://localhost:3000/api
+
+### GET specific
+GET http://localhost:3000/api/1
+
+### POST something
+POST http://localhost:3000/api
+Content-Type: application/json
+
+{
+    "name": "Stuffaroonies"
+}
