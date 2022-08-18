@@ -1,0 +1,5 @@
+### GET Increment Visitor
+GET http://localhost:3000/api/counter/visit
+
+### GET Return total visitors
+GET http://localhost:3000/api/counter/visitCounter
