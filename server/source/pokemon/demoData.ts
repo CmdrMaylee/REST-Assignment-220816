@@ -1,4 +1,5 @@
-import { addPokemon, Pokemon } from "./data"
+import { addPokemon } from "./pokemon.data";
+import { Pokemon } from "./pokemon.model";
 
 
 export let addDemoPokemon = () => {

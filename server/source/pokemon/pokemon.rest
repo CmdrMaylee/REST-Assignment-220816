@@ -1,13 +1,7 @@
-### GET welcome screen
-GET http://localhost:3000/api/welcome
-
-### GET visitor count
-GET http://localhost:3000/api/visit
-
-### GET All
+### GET All Pokemon
 GET http://localhost:3000/api/getPokedex
 
-### GET specific
+### GET specific pokemon via id
 GET http://localhost:3000/api/1
 
 ### POST something

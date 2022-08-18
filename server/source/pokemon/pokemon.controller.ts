@@ -1,11 +1,7 @@
-import { NextFunction, Request, Response } from "express";
-import { addPokemon, incrementCounter, pokedex, visitorCount } from "./data";
+import { Request, Response } from "express";
 import { addDemoPokemon } from "./demoData";
+import { addPokemon, pokedex } from "./pokemon.data";
 
-
-export const welcomeScreen = (req: Request, res: Response) => {
-    res.status(200).json('Welcome!')
-}
 
 export const getPokedex = (req: Request, res: Response) => {
     res.status(200).json(pokedex);
@@ -13,6 +9,7 @@ export const getPokedex = (req: Request, res: Response) => {
 
 export const getPokemonById = (req: Request, res: Response) => {
     console.log(req.params.id);
+
     res.status(200).json();
 }
 
@@ -23,6 +20,14 @@ export const addPokemonJson = (req: Request, res: Response) => {
     res.status(201).json(pokedex);
 }
 
+export const alterPokemon = (req: Request, res: Response) => {
+
+}
+
+export const removePokemonById = (req: Request, res: Response) => {
+
+}
+
 export const demoPokemon = (req: Request, res: Response) => {
     console.log('Adding demo data to pokedex...')
     addDemoPokemon();
@@ -30,15 +35,3 @@ export const demoPokemon = (req: Request, res: Response) => {
     res.status(200).json(pokedex);
 }
 
-export const countVisitor = (req: Request, res: Response) => {
-    const data = req.body;
-    incrementCounter();
-    console.log("Visitor registered")
-    console.log(`Total amount of visitors is currently ${ visitorCount }`)
-    res.status(200).json(data);
-}
-
-export const logger = (req: Request, _: Response, next: NextFunction) => {
-    console.log(req.method, req.path);
-    next();
-};
