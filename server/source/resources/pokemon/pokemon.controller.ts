@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
+import { returnPokedex } from "./pokemon.data";
 import { addDemoPokemon } from "./pokemon.demoData";
-import { isPokemonInPokedex, returnPokedex, returnPokemonById, validate } from "./pokemon.data";
+import { isPokemonInPokedex, returnPokemonById, validate } from "./pokemon.utilityFunctions";
 
 
-export const getPokedex = (req: Request, res: Response) => {
+export const getPokedex = (_: Request, res: Response) => {
     res.status(200).json(returnPokedex());
 }
 

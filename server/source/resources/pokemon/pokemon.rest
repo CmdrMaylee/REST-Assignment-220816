@@ -14,5 +14,5 @@ Content-Type: application/json
     "type": "type"
 }
 
-### GET add demo data
+### POST add demo data
 POST http://localhost:3000/api/pokemon/demo

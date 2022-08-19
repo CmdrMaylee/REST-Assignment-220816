@@ -1,4 +1,4 @@
-import { Request, Response } from "Express";
+import { Request, Response } from "express";
 import { incrementCounter, visitorCount } from "./counter.data";
 
 export const returnVisitorCount = (req: Request, res: Response) => {

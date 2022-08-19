@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node distribution/server.ts",
+    "start": "ts-node distribution/server.js",
     "build": "tsc",
     "check": "tsc --noEmit",
     "dev": "nodemon --transpile-only source/server.ts"
