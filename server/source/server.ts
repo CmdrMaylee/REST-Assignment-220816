@@ -11,13 +11,4 @@ app.use(logger)
 app.use('/api/pokemon', pokemonRouter);
 app.use('/api/counter', counterRouter);
 
-/* app.get('/api/visit', countVisitor)
-
-app.get('/api/:id', getPokedex);
-app.get('/api/:id', getPokemonById);
-app.post('/api/addpokemon', addPokemonJson)
-app.post('/api/removepokemon', removePokemonById)
-
-app.get('/api/demodata', demoPokemon) */
-
 app.listen(3000, () => console.log('Running on: http://localhost:3000'));

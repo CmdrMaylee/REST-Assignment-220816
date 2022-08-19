@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
-import { addDemoPokemon } from "./demoData";
-import { checkExistingPokemon, returnPokedex, returnPokemonById } from "./pokemon.data";
-import { Pokemon } from "./pokemon.model";
+import { addDemoPokemon } from "./pokemon.demoData";
+import { isPokemonInPokedex, returnPokedex, returnPokemonById, validate } from "./pokemon.data";
 
 
 export const getPokedex = (req: Request, res: Response) => {
@@ -10,8 +9,8 @@ export const getPokedex = (req: Request, res: Response) => {
 
 export const getPokemonById = (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
-    if (checkExistingPokemon(id) == true) {
-        const foundPokemon: Pokemon = returnPokemonById(id);
+    if (isPokemonInPokedex(id) == true) {
+        const foundPokemon = returnPokemonById(id);
         console.log('Found pokemon: ' + foundPokemon)
         res.status(200).json(foundPokemon);
     }
@@ -19,7 +18,10 @@ export const getPokemonById = (req: Request, res: Response) => {
 }
 
 export const addPokemonJson = (req: Request, res: Response) => {
-    
+    const result = validate(req.body)
+    if (result.error == undefined) {
+        
+    }
 }
 
 export const alterPokemon = (req: Request, res: Response) => {
@@ -32,7 +34,7 @@ export const removePokemonById = (req: Request, res: Response) => {
 
 export const demoPokemon = (req: Request, res: Response) => {
     console.log('Adding demo data to pokedex...');
-    addDemoPokemon();
-    console.log("Data added, returning pokedex to json response body...");
-    res.status(201).json();
+    const addedPokemon = addDemoPokemon();
+    console.log("Operation finished. Successfull additions to pokedexreported in json response body...");
+    res.status(201).json(addedPokemon);
 }

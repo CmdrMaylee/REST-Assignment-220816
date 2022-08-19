@@ -13,6 +13,8 @@ export let addDemoPokemon = () => {
         name: "Hitmonchan",
         type: "Fighting"
     }
-    addPokemon(porygon);
-    addPokemon(hitmon);
+    let wasAdded: Pokemon[] = [];
+    if (addPokemon(porygon)) wasAdded.push(porygon);
+    if (addPokemon(hitmon)) wasAdded.push(hitmon);
+    return wasAdded;
 }

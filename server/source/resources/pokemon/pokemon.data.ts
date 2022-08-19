@@ -1,4 +1,4 @@
-import Joi, { x } from 'joi';
+import Joi from "joi";
 import { Pokemon } from "./pokemon.model";
 
 
@@ -8,7 +8,15 @@ export const returnPokedex = () => {
     return pokedex;
 }
 
-export const addPokemon = (pokemon: Pokemon) => pokedex.push(pokemon);
+export const addPokemon = (pokemon: Pokemon) =>  {
+    if (isPokemonInPokedex(pokemon.id) == false) {
+        pokedex.push(pokemon);
+        return true;
+    } else {
+        console.log(`Pokemon with id ${pokemon.id} already exists. Skipping...`)
+        return false;
+    }
+}
 
 export const jsonToObject = (pokemonJson: string): Pokemon => {
     let result = JSON.parse(pokemonJson)
@@ -30,7 +38,7 @@ export const validate = (pokemon: string) => {
     return joiSchema.validate(pokemon)
 }
 
-export const checkExistingPokemon = (inputId: number) => {
+export const isPokemonInPokedex = (inputId: number) => {
     if (pokedex.find((x => x.id === inputId)) == undefined) return false
     else return true;
 }
