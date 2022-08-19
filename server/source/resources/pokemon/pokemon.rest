@@ -2,16 +2,16 @@
 GET http://localhost:3000/api/pokemon/
 
 ### GET specific pokemon via id
-GET http://localhost:3000/api/pokemon/1
+GET http://localhost:3000/api/pokemon/107
 
 ### POST something
 POST http://localhost:3000/api/pokemon/addpokemon
 Content-Type: application/json
 
 {
-    "id": "134",
-    "name": "Vaporeon",
-    "Type": "Water"
+    "id": 1111,
+    "name": "name",
+    "type": "type"
 }
 
 ### GET add demo data

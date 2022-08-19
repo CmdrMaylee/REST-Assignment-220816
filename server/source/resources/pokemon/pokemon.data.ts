@@ -1,20 +1,48 @@
+import Joi, { x } from 'joi';
 import { Pokemon } from "./pokemon.model";
 
 
 export let pokedex: Array<Pokemon> = [];
 
-export let addPokemon = (pokemon: Pokemon) => pokedex.push(pokemon);
+export const returnPokedex = () => { 
+    return pokedex;
+}
 
-export let jsonToObject = (pokemonJson: string): Pokemon => {
+export const addPokemon = (pokemon: Pokemon) => pokedex.push(pokemon);
+
+export const jsonToObject = (pokemonJson: string): Pokemon => {
     let result = JSON.parse(pokemonJson)
     return result;
 }
 
-export let validate = (json: string) => {
+export const validate = (pokemon: string) => {
+    const joiSchema = Joi.object({
+        id: Joi.number()
+            .required(),
 
+        name: Joi.string()
+            .required(),
+
+        type: Joi.string()
+            .required()
+    }).options({ abortEarly: false })
+
+    return joiSchema.validate(pokemon)
 }
 
-export let checkExistingPokemon = (inputId: number) => {
+export const checkExistingPokemon = (inputId: number) => {
     if (pokedex.find((x => x.id === inputId)) == undefined) return false
     else return true;
+}
+
+export const returnPokemonById = (id: number) => {
+    let result;
+    pokedex.forEach(function(x) {
+        if (id === x.id) {
+            console.log(`${id} matches with ${x.id}`)
+            result = x;
+        }
+        console.log(`${id} doesn't match ${x.id}`)
+    });
+    return result;
 }
