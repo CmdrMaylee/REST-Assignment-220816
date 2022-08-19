@@ -10,12 +10,10 @@ export const returnPokedex = () => {
 }
 
 export const pushBundleOfPokemonFromFile = (data: string) => {
+    console.log('File located. Checking availability and validity...');
     const result = jsonToObject(data);
-    if (result.length !< 1) {
-        result.forEach(x => {
-            console.log(x.name)
-            addPokemon(x);
-        });
+    if (result.length !== 0) {
+        pokedex = result;
     }
 }
 

@@ -28,12 +28,13 @@ export const isPokemonInPokedex = (inputId: number) => {
 }
 
 export const returnPokemonById = (id: number) => {
-    let result;
+    let result: Pokemon;
     pokedex.forEach(function(x) {
         if (id === x.id) {
             console.log(`${id} matches with ${x.id}`)
             result = x;
         }
+        if (result !== undefined) return result;
         console.log(`${id} doesn't match ${x.id}`)
     });
     return result;

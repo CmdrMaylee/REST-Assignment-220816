@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { returnPokedex } from "./pokemon.data";
 import { addDemoPokemon } from "./pokemon.demoData";
-import { isPokemonInPokedex, returnPokemonById, validate } from "./pokemon.utilityFunctions";
+import { isPokemonInPokedex, jsonToObject, returnPokemonById, validate } from "./pokemon.utilityFunctions";
 
 
 export const getPokedex = (_: Request, res: Response) => {
@@ -12,7 +12,6 @@ export const getPokemonById = (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
     if (isPokemonInPokedex(id) == true) {
         const foundPokemon = returnPokemonById(id);
-        console.log('Found pokemon: ' + foundPokemon)
         res.status(200).json(foundPokemon);
     }
     else res.status(404).json(`No Pokemon of id value ${id} found`)
@@ -21,7 +20,7 @@ export const getPokemonById = (req: Request, res: Response) => {
 export const addPokemonJson = (req: Request, res: Response) => {
     const result = validate(req.body)
     if (result.error == undefined) {
-        
+        jsonToObject(req.body)
     }
 }
 
