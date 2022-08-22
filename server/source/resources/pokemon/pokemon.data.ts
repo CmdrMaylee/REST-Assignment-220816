@@ -40,3 +40,16 @@ export const replacePokemonInfo = (id: number, pokemon: Pokemon) => {
         }
     });
 };
+
+export const removePokemon = (id: number): Pokemon => {
+    let deletedPokemonEntryArr: Pokemon[] = [];
+    for (let i = 0; i < pokedex.length; i++) {
+        if (pokedex[i].id === id) {
+            deletedPokemonEntryArr = pokedex.splice(i, 1);
+            break;
+        }
+    }
+    const deletedPokemonEntry = deletedPokemonEntryArr[0];
+    savePokedexToFile(pokedex);
+    return deletedPokemonEntry;
+};

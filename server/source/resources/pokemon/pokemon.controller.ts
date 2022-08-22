@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { addPokemon, replacePokemonInfo, returnPokedex } from "./pokemon.data";
+import { addPokemon, removePokemon, replacePokemonInfo, returnPokedex } from "./pokemon.data";
 import { addDemoPokemon } from "./pokemon.demoData";
 import { Pokemon } from "./pokemon.model";
 import {
@@ -53,7 +53,14 @@ export const alterPokemonById = (req: Request, res: Response) => {
 };
 
 export const removePokemonById = (req: Request, res: Response) => {
-    const idOfPokemonToRemove = req.params.id;
+    const id = parseInt(req.params.id);
+    const pokemonExists = isPokemonInPokedex(id);
+    if (isNaN(id)) res.status(400).json("Value provided must be of numerical value");
+    else if (pokemonExists == false) res.status(404).json(`No Pokemon of id value ${id} found`);
+    else {
+        const pokemonObject = removePokemon(id);
+        res.status(200).json(pokemonObject);
+    }
 };
 
 export const demoPokemon = (req: Request, res: Response) => {
