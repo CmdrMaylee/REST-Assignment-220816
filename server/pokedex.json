@@ -1,0 +1,20 @@
+[
+  {
+    "id": 137,
+    "name": "Porygon",
+    "type": "Polygonal",
+    "discovered": true
+  },
+  {
+    "id": 107,
+    "name": "Hitmonchan",
+    "type": "Fighting",
+    "discovered": false
+  },
+  {
+    "id": 1112,
+    "name": "name",
+    "type": "type",
+    "discovered": false
+  }
+]

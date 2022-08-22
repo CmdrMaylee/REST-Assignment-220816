@@ -14,6 +14,8 @@ export const validatePokemon = (pokemon: string) => {
         name: Joi.string().required(),
 
         type: Joi.string().required(),
+
+        discovered: Joi.boolean().required(),
     }).options({ abortEarly: false });
 
     return joiSchema.validate(pokemon);
@@ -35,15 +37,4 @@ export const returnPokemonById = (id: number) => {
         console.log(`${id} doesn't match ${x.id}`);
     });
     return result;
-};
-
-export const replacePokemonInfo = (id: number, pokemon: Pokemon) => {
-    pokedex.forEach((x) => {
-        if (x.id === id) {
-            x.id = pokemon.id;
-            x.name = pokemon.name;
-            x.type = pokemon.type;
-            return;
-        }
-    });
 };

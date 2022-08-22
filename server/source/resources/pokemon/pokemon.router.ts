@@ -1,7 +1,7 @@
 import express from "express";
 import {
     addPokemonJson,
-    alterPokemon,
+    alterPokemonById,
     demoPokemon,
     getPokedex,
     getPokemonById,
@@ -19,7 +19,7 @@ pokemonRouter.post("/addpokemon", addPokemonJson);
 pokemonRouter.post("/demo", demoPokemon);
 
 // PUTs
-pokemonRouter.put("/alterPokemon/:id", alterPokemon);
+pokemonRouter.put("/:id", alterPokemonById);
 
 // DELETEs
 pokemonRouter.delete("/:id", removePokemonById);

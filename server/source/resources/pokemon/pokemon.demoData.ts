@@ -6,11 +6,13 @@ export let addDemoPokemon = () => {
         id: 137,
         name: "Porygon",
         type: "Normal",
+        discovered: true,
     };
     let hitmon: Pokemon = {
         id: 107,
         name: "Hitmonchan",
         type: "Fighting",
+        discovered: false,
     };
     let wasAdded: Pokemon[] = [];
     if (addPokemon(porygon)) wasAdded.push(porygon);

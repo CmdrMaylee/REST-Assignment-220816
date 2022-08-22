@@ -27,3 +27,16 @@ export const addPokemon = (pokemon: Pokemon) => {
         return false;
     }
 };
+
+export const replacePokemonInfo = (id: number, pokemon: Pokemon) => {
+    pokedex.forEach((x) => {
+        if (x.id === id) {
+            x.id = pokemon.id;
+            x.name = pokemon.name;
+            x.type = pokemon.type;
+            x.discovered = pokemon.discovered;
+            savePokedexToFile(pokedex);
+            return;
+        }
+    });
+};

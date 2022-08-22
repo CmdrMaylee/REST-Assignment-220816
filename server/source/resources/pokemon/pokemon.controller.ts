@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
-import { addPokemon, returnPokedex } from "./pokemon.data";
+import { addPokemon, replacePokemonInfo, returnPokedex } from "./pokemon.data";
 import { addDemoPokemon } from "./pokemon.demoData";
 import { Pokemon } from "./pokemon.model";
 import {
     isPokemonInPokedex,
     jsonToSingleObject,
-    replacePokemonInfo,
     returnPokemonById,
     validatePokemon,
 } from "./pokemon.utilityFunctions";
@@ -33,12 +32,12 @@ export const addPokemonJson = (req: Request, res: Response) => {
         const pokemonObjectToAdd: Pokemon = jsonToSingleObject(stringified);
         const wasPokemonAdded = addPokemon(pokemonObjectToAdd);
         console.log(wasPokemonAdded);
-        if (wasPokemonAdded == true) res.status(201).json();
+        if (wasPokemonAdded == true) res.status(201).json(pokemonObjectToAdd);
         else res.status(303).json(`Pokemon of set ID(${pokemonObjectToAdd.id}) already exists`);
     }
 };
 
-export const alterPokemon = (req: Request, res: Response) => {
+export const alterPokemonById = (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
     const validity = validatePokemon(req.body);
     const pokemonExists = isPokemonInPokedex(id);
@@ -53,7 +52,9 @@ export const alterPokemon = (req: Request, res: Response) => {
     }
 };
 
-export const removePokemonById = (req: Request, res: Response) => {};
+export const removePokemonById = (req: Request, res: Response) => {
+    const idOfPokemonToRemove = req.params.id;
+};
 
 export const demoPokemon = (req: Request, res: Response) => {
     console.log("Adding demo data to pokedex...");

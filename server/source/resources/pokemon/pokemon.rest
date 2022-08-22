@@ -2,7 +2,7 @@
 GET http://localhost:3000/api/pokemon/
 
 ### GET specific pokemon via id
-GET http://localhost:3000/api/pokemon/137
+GET http://localhost:3000/api/pokemon/107
 
 ### POST something
 POST http://localhost:3000/api/pokemon/addpokemon
@@ -11,18 +11,23 @@ Content-Type: application/json
 {
     "id": 1112,
     "name": "name",
-    "type": "type"
+    "type": "type",
+    "discovered": false
 }
 
 ### PUT altered info into an existing pokemon
-PUT http://localhost:3000/api/pokemon/alterPokemon/137
+PUT http://localhost:3000/api/pokemon/134
 Content-Type: application/json
 
 {
-    "id": 134,
+    "id": 137,
     "name": "Porygon",
-    "type": "Polygonal"
+    "type": "Polygonal",
+    "discovered": true
 }
+
+### DELETE a pokemon based on parameter ID
+DELETE http://localhost:3000/api/pokemon/1112
 
 ### POST add demo data
 POST http://localhost:3000/api/pokemon/demo
