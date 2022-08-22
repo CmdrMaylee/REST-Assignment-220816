@@ -5,7 +5,7 @@ GET http://localhost:3000/api/pokemon/
 GET http://localhost:3000/api/pokemon/107
 
 ### POST something
-POST http://localhost:3000/api/pokemon/addpokemon
+POST http://localhost:3000/api/pokemon/
 Content-Type: application/json
 
 {

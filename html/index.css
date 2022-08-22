@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.json-boxes {    
+    position: absolute;
+    left: 20%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.json-boxes > * {
+    margin: 0.5rem;
+}
+
+.request-boxes {
+    padding: 1rem;
+}
+
+.request-elements {
+    padding: 0.2rem 1rem;
+}
+
+.request-elements > * {
+    margin: 0.3rem 0.4rem;
+}

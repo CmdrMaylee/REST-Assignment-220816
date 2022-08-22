@@ -15,7 +15,7 @@ pokemonRouter.get("/", getPokedex);
 pokemonRouter.get("/:id", getPokemonById);
 
 // POSTs
-pokemonRouter.post("/addpokemon", addPokemonJson);
+pokemonRouter.post("/", addPokemonJson);
 pokemonRouter.post("/demo", demoPokemon);
 
 // PUTs
