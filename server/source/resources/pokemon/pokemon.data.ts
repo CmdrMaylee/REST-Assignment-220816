@@ -1,6 +1,9 @@
 import { savePokedexToFile } from "../../middlewares";
 import { Pokemon } from "./pokemon.model";
-import { isPokemonInPokedex, jsonToObject } from "./pokemon.utilityFunctions";
+import {
+  isPokemonInPokedex,
+  jsonToSingleObject,
+} from "./pokemon.utilityFunctions";
 
 export let pokedex: Array<Pokemon> = [];
 
@@ -10,12 +13,13 @@ export const returnPokedex = () => {
 
 export const pushBundleOfPokemonFromFile = (data: string) => {
   console.log("File located. Checking availability and validity...");
-  const result = jsonToObject(data);
+  const result = jsonToSingleObject(data);
   if (result.length !== 0) {
     pokedex = result;
   }
 };
 
+// Returns true if added, false if not
 export const addPokemon = (pokemon: Pokemon) => {
   if (isPokemonInPokedex(pokemon.id) == false) {
     pokedex.push(pokemon);

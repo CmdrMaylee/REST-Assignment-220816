@@ -2,8 +2,8 @@ import Joi from "joi";
 import { pokedex } from "./pokemon.data";
 import { Pokemon } from "./pokemon.model";
 
-export const jsonToObject = (pokemonJson: string): Pokemon[] => {
-  let result = JSON.parse(pokemonJson);
+export const jsonToSingleObject = (pokemonJson: string) => {
+  const result = JSON.parse(pokemonJson);
   return result;
 };
 

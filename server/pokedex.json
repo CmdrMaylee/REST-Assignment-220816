@@ -8,5 +8,10 @@
     "id": 107,
     "name": "Hitmonchan",
     "type": "Fighting"
+  },
+  {
+    "id": 1112,
+    "name": "name",
+    "type": "type"
   }
 ]

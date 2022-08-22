@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { returnPokedex } from "./pokemon.data";
+import { addPokemon, returnPokedex } from "./pokemon.data";
 import { addDemoPokemon } from "./pokemon.demoData";
 import { Pokemon } from "./pokemon.model";
 import {
   isPokemonInPokedex,
-  jsonToObject,
+  jsonToSingleObject,
   returnPokemonById,
   validate,
 } from "./pokemon.utilityFunctions";
@@ -23,13 +23,18 @@ export const getPokemonById = (req: Request, res: Response) => {
 
 export const addPokemonJson = (req: Request, res: Response) => {
   const validity = validate(req.body);
-  if (validity.error == undefined) {
-    const result: Pokemon[] = jsonToObject(req.body);
-
-    result.forEach((x) => {
-      console.log(x.name);
-      // addPokemon(x)
-    });
+  if (validity.error !== undefined) {
+    res.status(400).json(validity.error.message);
+  } else {
+    const stringified = JSON.stringify(req.body);
+    const pokemonObjectToAdd: Pokemon = jsonToSingleObject(stringified);
+    const wasPokemonAdded = addPokemon(pokemonObjectToAdd);
+    console.log(wasPokemonAdded);
+    if (wasPokemonAdded == true) res.status(201).json();
+    else
+      res
+        .status(303)
+        .json(`Pokemon of set ID(${pokemonObjectToAdd.id}) already exists`);
   }
 };
 

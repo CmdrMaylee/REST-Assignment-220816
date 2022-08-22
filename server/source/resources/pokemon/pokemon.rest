@@ -8,13 +8,11 @@ GET http://localhost:3000/api/pokemon/107
 POST http://localhost:3000/api/pokemon/addpokemon
 Content-Type: application/json
 
-[
 {
-    "id": 1111,
+    "id": 1112,
     "name": "name",
     "type": "type"
 }
-]
 
 ### POST add demo data
 POST http://localhost:3000/api/pokemon/demo
