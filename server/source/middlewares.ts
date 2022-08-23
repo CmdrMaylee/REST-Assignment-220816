@@ -5,7 +5,7 @@ import { pushBundleOfPokemonFromFile } from "./resources/pokemon/pokemon.data";
 const jsonPokedexFileName = "pokedex.json";
 
 export const logger = (req: Request, _: Response, next: NextFunction) => {
-    console.log("Request type: " + req.method + " End-point: " + req.path);
+    console.log(req.method + " " + req.path);
     next();
 };
 

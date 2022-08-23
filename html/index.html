@@ -45,10 +45,28 @@
 
         <div class="request-boxes">
             <h3>post</h3>
-            <div class="request-elements post-elements">
-                <button type="submit" class="post-pokemon-button">Create Pokemon</button>
-                <input type="text" class="post-pokemon-id-input" placeholder="ID" size="4" />
-            </div>
+            <form action="http://localhost:3000/api/pokemon/" method="post">
+                <div class="request-elements post-elements">
+                    <button type="submit" class="post-pokemon-button">Create Pokemon</button>
+                    <input type="text" class="post-pokemon-id-input" placeholder="ID" size="4" />
+                    <input
+                        type="text"
+                        class="post-pokemon-name-input"
+                        placeholder="name"
+                        size="12"
+                    />
+                    <input
+                        type="text"
+                        class="post-pokemon-type-input"
+                        placeholder="type"
+                        size="12"
+                    />
+                    <select name="" id="" class="post-pokemon-discovered-input">
+                        <option value="false">false</option>
+                        <option value="true">true</option>
+                    </select>
+                </div>
+            </form>
         </div>
 
         <div class="request-boxes">
