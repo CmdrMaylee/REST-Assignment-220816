@@ -60,8 +60,8 @@ export const removePokemonById = (req: Request, res: Response) => {
     if (isNaN(id)) res.status(400).json("Value provided must be of numerical value");
     else if (pokemonExists == false) res.status(404).json(`No Pokemon of id value ${id} found`);
     else {
-        const pokemonObject = removePokemon(id);
-        res.status(200).json(pokemonObject);
+        removePokemon(id);
+        res.status(200).json(`Entry of id ${id} successfully deleted`);
     }
 };
 
@@ -72,5 +72,5 @@ export const demoPokemon = (req: Request, res: Response) => {
         "Operation finished. Successfull additions to pokedex reported in json response body..."
     );
     if (addedPokemon.length === 0) res.status(201).json("Demo pokemon is already in storage");
-    else res.status(201).json(addedPokemon);
+    else res.status(201).json(addedPokemon.length + " Pokemon added");
 };

@@ -1,7 +1,6 @@
 const url = "http://localhost:3000/api/pokemon/";
 const xhttp = new XMLHttpRequest();
-const btnGetAll = document.querySelector(".get-pokedex").addEventListener("click", getPokedex);
-document.querySelector(".get-pokemon-id-btn").addEventListener("click", getPokemonById);
+btnGetAll = document.querySelector(".get-pokedex").addEventListener("click", evaluateGet);
 document.querySelector(".post-pokemon-button").addEventListener("click", createPokemonPost);
 document.querySelector(".put-pokemon-button").addEventListener("click", alterPokemonPut);
 document.querySelector(".put-demo-pokemon").addEventListener("click", addDemoData);
@@ -9,6 +8,12 @@ document.querySelector(".delete-pokemon-button").addEventListener("click", delet
 
 const resTextField = document.querySelector("#txtRes");
 const resCodeTxtField = document.querySelector("#txtResCode");
+
+function evaluateGet() {
+    const intId = parseInt(document.querySelector(".get-pokemon-id-input").value);
+    if (isNaN(intId)) getPokedex();
+    else getPokemonById();
+}
 
 function getPokedex() {
     xhttp.open("GET", url, true);
@@ -24,13 +29,13 @@ function getPokedex() {
 
 function getPokemonById() {
     const id = document.querySelector(".get-pokemon-id-input").value;
-    console.log(id);
     xhttp.open("GET", url + id, true);
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState === 4 && xhttp.status === 200) {
             const objects = JSON.parse(xhttp.responseText);
             resTextField.innerHTML = JSON.stringify(objects, null, 2);
         } else {
+            console.log("nope");
             resTextField.innerHTML = xhttp.response;
             resCodeTxtField.innerHTML = xhttp.status;
         }
@@ -68,10 +73,8 @@ function addDemoData() {
     xhttp.open("POST", url + "demo", true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.onreadystatechange = function () {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-            const objects = JSON.parse(xhttp.responseText);
-            resTextField.innerHTML = JSON.stringify(objects, null, 2);
-        } else {
+        if (xhttp.readyState == 4 && xhttp.status == 201) {
+            console.log(xhttp.responseText);
             resTextField.innerHTML = xhttp.response;
             resCodeTxtField.innerHTML = xhttp.status;
         }
@@ -84,7 +87,7 @@ function alterPokemonPut() {
     const newIdValueNumber = parseInt(document.querySelector(".post-pokemon-new-id-input").value);
     console.log(newIdValueNumber);
     xhttp.open("PUT", url + bodyObject.id, true);
-    if (newIdValueNumber === NaN || newIdValueNumber !== "") bodyObject.id = newIdValueNumber;
+    if (isNaN(newIdValueNumber) || newIdValueNumber !== "") bodyObject.id = newIdValueNumber;
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -104,11 +107,7 @@ function deleteEntryByID() {
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            const objects = JSON.parse(xhttp.responseText);
-            resTextField.innerHTML = JSON.stringify(objects, null, 2);
-        } else {
-            resTextField.innerHTML = xhttp.response;
-            resCodeTxtField.innerHTML = xhttp.status;
+            resTextField.innerHTML = xhttp.responseText;
         }
     };
     xhttp.send();
