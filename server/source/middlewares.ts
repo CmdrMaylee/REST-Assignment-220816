@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import fs from "fs";
-import { pushBundleOfPokemonFromFile } from "./resources/pokemon/pokemon.data";
+import { pushBundleOfPokemonFromFile } from "./resources/pokemon/pokemon.model";
 
 const jsonPokedexFileName = "pokedex.json";
 

@@ -1,7 +1,12 @@
 import { Request, Response } from "express";
-import { addPokemon, removePokemon, replacePokemonInfo, returnPokedex } from "./pokemon.data";
 import { addDemoPokemon } from "./pokemon.demoData";
-import { Pokemon } from "./pokemon.model";
+import {
+    addPokemon,
+    Pokemon,
+    removePokemon,
+    replacePokemonInfo,
+    returnPokedex,
+} from "./pokemon.model";
 import {
     isPokemonInPokedex,
     jsonToSingleObject,
@@ -11,7 +16,7 @@ import {
 
 export const getPokedex = (_: Request, res: Response) => {
     const pokedex = returnPokedex();
-    if (pokedex.length === 0) res.status(200).json("The Pokedex is currently empty");
+    if (pokedex.length === 0) res.status(404).json("The Pokedex is currently empty");
     else res.status(200).json(returnPokedex());
 };
 
@@ -34,7 +39,8 @@ export const addPokemonJson = (req: Request, res: Response) => {
         const pokemonObjectToAdd: Pokemon = jsonToSingleObject(stringified);
         const wasPokemonAdded = addPokemon(pokemonObjectToAdd);
         console.log(wasPokemonAdded);
-        if (wasPokemonAdded == true) res.status(201).json(pokemonObjectToAdd);
+        if (wasPokemonAdded == true)
+            res.status(201).json(pokemonObjectToAdd.name + " added successfully!");
         else res.status(303).json(`Pokemon of set ID(${pokemonObjectToAdd.id}) already exists`);
     }
 };
@@ -42,15 +48,21 @@ export const addPokemonJson = (req: Request, res: Response) => {
 export const alterPokemonById = (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
     const validity = validatePokemon(req.body);
-    const pokemonExists = isPokemonInPokedex(id);
+    const pokemonToChangeExists = isPokemonInPokedex(id);
     if (isNaN(id)) res.status(400).json("Value provided must be of numerical value");
     else if (validity.error !== undefined) res.status(400).json(validity.error.message);
-    else if (pokemonExists == false) res.status(404).json(`No Pokemon of id value ${id} found`);
+    else if (pokemonToChangeExists == false)
+        res.status(404).json(`No Pokemon of id value ${id} found`);
     else {
         const stringified = JSON.stringify(req.body);
         const pokemonObject = jsonToSingleObject(stringified);
-        replacePokemonInfo(id, pokemonObject);
-        res.status(200).json(pokemonObject);
+        const pokemonWithNewIdExists = isPokemonInPokedex(pokemonObject.id);
+        if (pokemonWithNewIdExists) {
+            res.status(400).json(`A pokemon with the id ${pokemonObject.id} already exists`);
+        } else {
+            replacePokemonInfo(id, pokemonObject);
+            res.status(200).json(pokemonObject.name + " successfully edited");
+        }
     }
 };
 
