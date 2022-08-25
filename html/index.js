@@ -49,7 +49,9 @@ function assemblePokeInfo() {
     bodyObject.id = parseInt(stringId);
     bodyObject.name = document.querySelector(".post-pokemon-name-input").value;
     bodyObject.type = document.querySelector(".post-pokemon-type-input").value;
-    bodyObject.discovered = document.querySelector(".post-pokemon-discovered-input").value;
+    const discovered = document.querySelector(".post-pokemon-discovered-input").value;
+    bodyObject.discovered = discovered === "true";
+
     return bodyObject;
 }
 
