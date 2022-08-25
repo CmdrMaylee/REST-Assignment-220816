@@ -1,5 +1,4 @@
 import fs from "fs";
-import Joi from "joi";
 import { pokedex, Pokemon, pushBundleOfPokemonFromFile } from "./pokemon.model";
 
 const jsonPokedexFileName = "pokedex.json";

@@ -4,7 +4,11 @@ function deleteEntryByID() {
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            resTextField.innerHTML = xhttp.responseText;
+            resTextField.innerHTML = xhttp.response;
+            resCodeTxtField.innerHTML = xhttp.status;
+        } else {
+            resTextField.innerHTML = xhttp.response;
+            resCodeTxtField.innerHTML = xhttp.status;
         }
     };
     xhttp.send();

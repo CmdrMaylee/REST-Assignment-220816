@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import Joi from "joi";
-import { Pokemon } from "./resources/pokemon/pokemon.model";
+import { Pokemon } from "./resources/pokemon.model";
 
 export const logger = (req: Request, _: Response, next: NextFunction) => {
     console.log(req.method + " " + req.path);

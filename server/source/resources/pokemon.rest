@@ -20,14 +20,14 @@ PUT http://localhost:3000/api/pokemon/137
 Content-Type: application/json
 
 {
-    "id": 137,
+    "id": 1112,
     "name": "Porygon",
     "type": "Polygonal",
     "discovered": true
 }
 
 ### DELETE a pokemon based on parameter ID
-DELETE http://localhost:3000/api/pokemon/1112
+DELETE http://localhost:3000/api/pokemon/137
 
 ### POST add demo data
 POST http://localhost:3000/api/pokemon/demo

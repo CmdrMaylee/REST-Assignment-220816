@@ -1,5 +1,5 @@
 import express from "express";
-import { validatePokemon } from "../../middlewares";
+import { validatePokemon } from "../middlewares";
 import {
     addPokemonJson,
     alterPokemonById,
@@ -23,6 +23,6 @@ pokemonRouter.post("/demo", demoPokemon);
 pokemonRouter.put("/:id", validatePokemon, alterPokemonById);
 
 // DELETEs
-pokemonRouter.delete("/:id", validatePokemon, removePokemonById);
+pokemonRouter.delete("/:id", removePokemonById);
 
 export default pokemonRouter;
