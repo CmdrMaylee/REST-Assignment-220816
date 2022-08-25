@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### PUT altered info into an existing pokemon
-PUT http://localhost:3000/api/pokemon/134
+PUT http://localhost:3000/api/pokemon/137
 Content-Type: application/json
 
 {

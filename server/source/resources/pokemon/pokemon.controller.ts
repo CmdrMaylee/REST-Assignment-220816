@@ -10,7 +10,9 @@ import {
 } from "./pokemon.utilityFunctions";
 
 export const getPokedex = (_: Request, res: Response) => {
-    res.status(200).json(returnPokedex());
+    const pokedex = returnPokedex();
+    if (pokedex.length === 0) res.status(200).json("The Pokedex is currently empty");
+    else res.status(200).json(returnPokedex());
 };
 
 export const getPokemonById = (req: Request, res: Response) => {
@@ -65,9 +67,10 @@ export const removePokemonById = (req: Request, res: Response) => {
 
 export const demoPokemon = (req: Request, res: Response) => {
     console.log("Adding demo data to pokedex...");
-    const addedPokemon = addDemoPokemon();
+    let addedPokemon = addDemoPokemon();
     console.log(
         "Operation finished. Successfull additions to pokedex reported in json response body..."
     );
-    res.status(201).json(addedPokemon);
+    if (addedPokemon.length === 0) res.status(201).json("Demo pokemon is already in storage");
+    else res.status(201).json(addedPokemon);
 };
