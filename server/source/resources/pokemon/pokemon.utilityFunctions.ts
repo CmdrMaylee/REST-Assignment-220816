@@ -1,23 +1,12 @@
+import fs from "fs";
 import Joi from "joi";
-import { pokedex, Pokemon } from "./pokemon.model";
+import { pokedex, Pokemon, pushBundleOfPokemonFromFile } from "./pokemon.model";
+
+const jsonPokedexFileName = "pokedex.json";
 
 export const jsonToSingleObject = (pokemonJson: string) => {
     const result = JSON.parse(pokemonJson);
     return result;
-};
-
-export const validatePokemon = (pokemon: string) => {
-    const joiSchema = Joi.object({
-        id: Joi.number().required(),
-
-        name: Joi.string().required(),
-
-        type: Joi.string().required(),
-
-        discovered: Joi.boolean().required(),
-    }).options({ abortEarly: false });
-
-    return joiSchema.validate(pokemon);
 };
 
 export const isPokemonInPokedex = (inputId: number) => {
@@ -36,4 +25,16 @@ export const returnPokemonById = (id: number) => {
         console.log(`${id} doesn't match ${x.id}`);
     });
     return result;
+};
+
+export const savePokedexToFile = (json: object) => {
+    const stringified = JSON.stringify(json, null, 2); // The last argument '2' prettifies the json when it's written to the file.
+    fs.writeFileSync(jsonPokedexFileName, stringified);
+};
+
+export const loadPokedexFromFile = () => {
+    console.log("Loading from file...");
+    let data = fs.readFileSync(jsonPokedexFileName, "utf-8").replace(/\s+/g, ""); // The replace bit will trim away -all- whitespace.
+    if (data !== "") pushBundleOfPokemonFromFile(data);
+    else console.log("File not located. Collection will be empty.");
 };

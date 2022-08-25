@@ -11,7 +11,6 @@ import {
     isPokemonInPokedex,
     jsonToSingleObject,
     returnPokemonById,
-    validatePokemon,
 } from "./pokemon.utilityFunctions";
 
 export const getPokedex = (_: Request, res: Response) => {
@@ -30,27 +29,28 @@ export const getPokemonById = (req: Request, res: Response) => {
     } else res.status(404).json(`No Pokemon of id value ${id} found`);
 };
 
-export const addPokemonJson = (req: Request, res: Response) => {
+export const addPokemonJson = (req: Request<{}, {}, Pokemon>, res: Response) => {
+    /* 
     const validity = validatePokemon(req.body);
     if (validity.error !== undefined) {
         res.status(400).json(validity.error.message);
-    } else {
-        const stringified = JSON.stringify(req.body);
-        const pokemonObjectToAdd: Pokemon = jsonToSingleObject(stringified);
-        const wasPokemonAdded = addPokemon(pokemonObjectToAdd);
-        console.log(wasPokemonAdded);
-        if (wasPokemonAdded == true)
-            res.status(201).json(pokemonObjectToAdd.name + " added successfully!");
-        else res.status(303).json(`Pokemon of set ID(${pokemonObjectToAdd.id}) already exists`);
-    }
+    } else { */
+    const stringified = JSON.stringify(req.body);
+    const pokemonObjectToAdd: Pokemon = jsonToSingleObject(stringified);
+    const wasPokemonAdded = addPokemon(pokemonObjectToAdd);
+    console.log(wasPokemonAdded);
+    if (wasPokemonAdded == true)
+        res.status(201).json(pokemonObjectToAdd.name + " added successfully!");
+    else res.status(303).json(`Pokemon of set ID(${pokemonObjectToAdd.id}) already exists`);
 };
+/* }; */
 
 export const alterPokemonById = (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
-    const validity = validatePokemon(req.body);
+    // const validity = validatePokemon(req.body);
     const pokemonToChangeExists = isPokemonInPokedex(id);
     if (isNaN(id)) res.status(400).json("Value provided must be of numerical value");
-    else if (validity.error !== undefined) res.status(400).json(validity.error.message);
+    // else if (validity.error !== undefined) res.status(400).json(validity.error.message);
     else if (pokemonToChangeExists == false)
         res.status(404).json(`No Pokemon of id value ${id} found`);
     else {

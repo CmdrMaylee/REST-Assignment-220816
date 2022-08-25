@@ -1,8 +1,9 @@
-import express from "express";
 import cors from "cors";
-import { loadPokedexFromFile, logger } from "./middlewares";
+import express from "express";
+import { logger } from "./middlewares";
 import counterRouter from "./resources/counter/counter.router";
 import pokemonRouter from "./resources/pokemon/pokemon.router";
+import { loadPokedexFromFile } from "./resources/pokemon/pokemon.utilityFunctions";
 
 const app = express();
 app.use(express.json());

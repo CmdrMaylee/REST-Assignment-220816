@@ -1,4 +1,5 @@
 import express from "express";
+import { validatePokemon } from "../../middlewares";
 import {
     addPokemonJson,
     alterPokemonById,
@@ -15,13 +16,13 @@ pokemonRouter.get("/", getPokedex);
 pokemonRouter.get("/:id", getPokemonById);
 
 // POSTs
-pokemonRouter.post("/", addPokemonJson);
+pokemonRouter.post("/", validatePokemon, addPokemonJson);
 pokemonRouter.post("/demo", demoPokemon);
 
 // PUTs
-pokemonRouter.put("/:id", alterPokemonById);
+pokemonRouter.put("/:id", validatePokemon, alterPokemonById);
 
 // DELETEs
-pokemonRouter.delete("/:id", removePokemonById);
+pokemonRouter.delete("/:id", validatePokemon, removePokemonById);
 
 export default pokemonRouter;

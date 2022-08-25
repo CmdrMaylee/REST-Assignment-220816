@@ -1,5 +1,8 @@
-import { savePokedexToFile } from "../../middlewares";
-import { isPokemonInPokedex, jsonToSingleObject } from "./pokemon.utilityFunctions";
+import {
+    isPokemonInPokedex,
+    jsonToSingleObject,
+    savePokedexToFile,
+} from "./pokemon.utilityFunctions";
 
 export interface Pokemon {
     id: number;
