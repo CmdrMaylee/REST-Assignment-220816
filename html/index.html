@@ -10,24 +10,23 @@
     </head>
 
     <body>
-        <div class="json-boxes">
+        <div class="json-box">
             <textarea
                 name="response"
                 id="txtRes"
-                cols="40"
-                rows="20"
-                placeholder="JSON request body"
-            ></textarea>
-            <textarea
-                name="response"
-                id="txtReq"
                 cols="40"
                 rows="20"
                 placeholder="Response body will go here..."
                 readonly
             ></textarea>
 
-            <input type="text" name="response-code" id="" placeholder="Response-code" />
+            <textarea
+                type="text"
+                name="response-code"
+                id="txtResCode"
+                placeholder="Response-code"
+                readonly
+            ></textarea>
         </div>
 
         <h1>Pokedex</h1>
@@ -37,50 +36,44 @@
             <div class="request-elements get-elements">
                 <button type="submit" class="get-pokedex">Get all Pokedex entries</button>
                 <div class="request-elements">
-                    <button type="submit" class="get-pokedex">Get Pokemon by ID</button>
-                    <input type="text" id="get-pokemon-id-input" placeholder="ID" size="4" />
+                    <button type="submit" class="get-pokemon-id-btn">Get Pokemon by ID</button>
+                    <input type="text" class="get-pokemon-id-input" placeholder="ID" size="4" />
                 </div>
             </div>
         </div>
 
         <div class="request-boxes">
-            <h3>post</h3>
-            <form action="http://localhost:3000/api/pokemon/" method="post">
-                <div class="request-elements post-elements">
-                    <button type="submit" class="post-pokemon-button">Create Pokemon</button>
-                    <input type="text" class="post-pokemon-id-input" placeholder="ID" size="4" />
-                    <input
-                        type="text"
-                        class="post-pokemon-name-input"
-                        placeholder="name"
-                        size="12"
-                    />
-                    <input
-                        type="text"
-                        class="post-pokemon-type-input"
-                        placeholder="type"
-                        size="12"
-                    />
+            <h3>post & put</h3>
+            <div class="request-elements post-elements">
+                <input type="text" class="post-pokemon-id-input" placeholder="ID" size="4" />
+                <input type="text" class="post-pokemon-name-input" placeholder="name" size="12" />
+                <input type="text" class="post-pokemon-type-input" placeholder="type" size="12" />
+                <div>
+                    <p>Discovered</p>
                     <select name="" id="" class="post-pokemon-discovered-input">
                         <option value="false">false</option>
                         <option value="true">true</option>
                     </select>
                 </div>
-            </form>
+            </div>
         </div>
 
         <div class="request-boxes">
-            <h3>put</h3>
             <div class="request-elements put-elements">
+                <input type="text" class="post-pokemon-id-input" placeholder="New ID" size="4" />
+                <button type="submit" class="post-pokemon-button">Create Pokemon</button>
                 <button type="submit" class="put-pokemon-button">Update Pokemon by ID</button>
-                <input type="text" class="post-pokemon-id-input" placeholder="ID" size="4" />
+                <p>
+                    If you want to change an entry's ID property, fill in it's old information in
+                    the 3 text boxes above, and input the new ID in the "New ID" box.
+                </p>
             </div>
         </div>
 
         <div class="request-boxes">
             <h3>delete</h3>
             <div class="request-elements delete-elements">
-                <button type="submit" class="get-pokedex">Get Pokemon by ID</button>
+                <button type="submit" class="get-pokedex">Delete</button>
                 <input type="text" class="delete-pokemon-id-input" placeholder="ID" size="4" />
             </div>
         </div>
