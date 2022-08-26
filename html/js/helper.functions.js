@@ -39,7 +39,7 @@ function editPokemonSetVariables() {
         resCodeTxtField.innerHTML = "400";
     }
 
-    let pokemonJson = returnPokemonJson();
+    let pokemonJson = returnPokemonJson(id);
 
     const result = JSON.parse(pokemonJson);
     if (result.id !== undefined) {
