@@ -33,7 +33,6 @@ export const addPokemonJson = (req: Request<{}, {}, Pokemon>, res: Response) => 
     const stringified = JSON.stringify(req.body);
     const pokemonObjectToAdd: Pokemon = jsonToSingleObject(stringified);
     const wasPokemonAdded = addPokemon(pokemonObjectToAdd);
-    console.log(wasPokemonAdded);
     if (wasPokemonAdded == true)
         res.status(201).json(pokemonObjectToAdd.name + " added successfully!");
     else res.status(303).json(`Pokemon of set ID(${pokemonObjectToAdd.id}) already exists`);

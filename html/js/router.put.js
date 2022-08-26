@@ -1,7 +1,6 @@
 function alterPokemonPut() {
     let bodyObject = assemblePokeInfo();
     const newIdValueNumber = parseInt(document.querySelector(".post-pokemon-new-id-input").value);
-    console.log(newIdValueNumber);
     xhttp.open("PUT", url + bodyObject.id, true);
     if (isNaN(newIdValueNumber) || newIdValueNumber !== "") bodyObject.id = newIdValueNumber;
     xhttp.setRequestHeader("Content-Type", "application/json");

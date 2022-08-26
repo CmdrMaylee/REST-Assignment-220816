@@ -11,6 +11,9 @@ function getPokedex() {
             const objects = JSON.parse(xhttp.responseText);
             resTextField.innerHTML = JSON.stringify(objects, null, 2);
             resCodeTxtField.innerHTML = this.status;
+        } else {
+            resTextField.innerHTML = xhttp.response;
+            resCodeTxtField.innerHTML = xhttp.status;
         }
     };
     xhttp.send();
@@ -24,7 +27,6 @@ function getPokemonById() {
             const objects = JSON.parse(xhttp.responseText);
             resTextField.innerHTML = JSON.stringify(objects, null, 2);
         } else {
-            console.log("nope");
             resTextField.innerHTML = xhttp.response;
             resCodeTxtField.innerHTML = xhttp.status;
         }

@@ -19,7 +19,6 @@ function addDemoData() {
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 201) {
-            console.log(xhttp.responseText);
             resTextField.innerHTML = xhttp.response;
             resCodeTxtField.innerHTML = xhttp.status;
         }
