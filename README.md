@@ -21,3 +21,7 @@ OPTIONAL: VSCode and the Live-Server extension.
 5. Open up the index.html file from the "html" directory and test out the buttons and forms.
 
 6. ALT. if step 5 fails, try opening it in a different browser. Alternatively, use VSCode and open the index.html file with live server. Make sure to close the connection after it has successfully opened to avoid the page refreshing with every change to the .json storage file!
+
+## Github link
+
+https://github.com/CmdrMaylee/REST-Assignment-220816
