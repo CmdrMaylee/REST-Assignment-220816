@@ -51,6 +51,20 @@ function editPokemonSetVariables() {
         document.querySelector(".put-pokemon-id-input").value = "";
         document.querySelector(".put-pokemon-name-input").value = "";
         document.querySelector(".put-pokemon-type-input").value = "";
-        document.querySelector(".put-pokemon-discovered-input").value = "";
+        document.querySelector(".put-pokemon-discovered-input").value = "false";
     }
+}
+
+function emptyPostForm() {
+    document.querySelector(".post-pokemon-id-input").value = "";
+    document.querySelector(".post-pokemon-name-input").value = "";
+    document.querySelector(".post-pokemon-type-input").value = "";
+    document.querySelector(".post-pokemon-discovered-input").value = "false";
+}
+
+function emptyPutForm() {
+    document.querySelector(".put-pokemon-id-input").value = "";
+    document.querySelector(".put-pokemon-name-input").value = "";
+    document.querySelector(".put-pokemon-type-input").value = "";
+    document.querySelector(".put-pokemon-discovered-input").value = "false";
 }
