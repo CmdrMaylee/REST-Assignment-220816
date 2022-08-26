@@ -20,9 +20,18 @@
 }
 
 .request-elements {
+    display: flex;
     padding: 0.2rem 1rem;
 }
 
 .request-elements > * {
     margin: 0.3rem 0.4rem;
+}
+
+.discovered-text {
+    position: relative;
+}
+
+.flex {
+    display: flex;
 }

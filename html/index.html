@@ -42,48 +42,46 @@
         <div class="request-boxes">
             <h3>get</h3>
             <div class="request-elements get-elements">
-                <!-- <form action="" method="get"> -->
-                <button type="submit" class="get-pokedex">Get Pokedex/by entry</button>
-                <div class="request-elements">
-                    <input type="text" class="get-pokemon-id-input" placeholder="ID" size="4" />
-                </div>
-                <!-- </form> -->
+                <input type="text" class="get-pokemon-id-input" placeholder="ID" size="4" />
+                <button type="submit" class="get-pokedex-btn">Get Pokedex/by entry</button>
+                <button type="submit" class="edit-pokemon-btn">Edit</button>
             </div>
         </div>
 
         <div class="request-boxes">
-            <h3>post & put</h3>
+            <h3>post</h3>
             <div class="request-elements post-elements">
                 <input type="text" class="post-pokemon-id-input" placeholder="ID" size="4" />
                 <input type="text" class="post-pokemon-name-input" placeholder="name" size="12" />
                 <input type="text" class="post-pokemon-type-input" placeholder="type" size="12" />
-                <div>
-                    <p>Discovered</p>
+                <div class="flex">
+                    <p class="discovered-text">Discovered:</p>
                     <select name="" id="" class="post-pokemon-discovered-input">
                         <option value="false">false</option>
                         <option value="true">true</option>
                     </select>
                 </div>
+                <button type="submit" class="post-pokemon-button">Create Pokemon</button>
             </div>
+            <button class="put-demo-pokemon">DEMO: Add demo data to Pokedex</button>
         </div>
 
         <div class="request-boxes">
+            <h3>put</h3>
             <div class="request-elements put-elements">
-                <input
-                    type="text"
-                    class="post-pokemon-new-id-input"
-                    placeholder="New ID"
-                    size="4"
-                />
-                <button type="submit" class="post-pokemon-button">Create Pokemon</button>
+                <input type="text" class="put-pokemon-id-input" placeholder="ID" size="4" />
+                <input type="text" class="put-pokemon-name-input" placeholder="name" size="12" />
+                <input type="text" class="put-pokemon-type-input" placeholder="type" size="12" />
+                <div class="flex">
+                    <p class="discovered-text">Discovered:</p>
+                    <select name="" id="" class="put-pokemon-discovered-input">
+                        <option value="false">false</option>
+                        <option value="true">true</option>
+                    </select>
+                </div>
+                <input type="text" class="put-pokemon-new-id-input" placeholder="New ID" size="4" />
                 <button type="submit" class="put-pokemon-button">Update Pokemon by ID</button>
-                <p>
-                    To change an entry's ID property, fill in it's old ID in the text box
-                    above(alongside any change to Name or Type), and input the new ID in the "New
-                    ID" box.
-                </p>
             </div>
-            <button class="put-demo-pokemon">DEMO: Add demo data to Pokedex</button>
         </div>
 
         <div class="request-boxes">

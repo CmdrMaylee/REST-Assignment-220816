@@ -1,5 +1,5 @@
 function createPokemonPost() {
-    let bodyObject = assemblePokeInfo();
+    let bodyObject = assemblePokeInfo("post");
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.onreadystatechange = function () {

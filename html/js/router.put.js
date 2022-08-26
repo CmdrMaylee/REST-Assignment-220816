@@ -1,8 +1,9 @@
 function alterPokemonPut() {
-    let bodyObject = assemblePokeInfo();
-    const newIdValueNumber = parseInt(document.querySelector(".post-pokemon-new-id-input").value);
+    let bodyObject = assemblePokeInfo("put");
+    const newIdValueNumber = parseInt(document.querySelector(".put-pokemon-new-id-input").value);
+    console.log(bodyObject);
     xhttp.open("PUT", url + bodyObject.id, true);
-    if (isNaN(newIdValueNumber) || newIdValueNumber !== "") bodyObject.id = newIdValueNumber;
+    if (!isNaN(newIdValueNumber)) bodyObject.id = newIdValueNumber;
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {

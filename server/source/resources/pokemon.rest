@@ -20,7 +20,7 @@ PUT http://localhost:3000/api/pokemon/137
 Content-Type: application/json
 
 {
-    "id": 1112,
+    "id": 137,
     "name": "Porygon",
     "type": "Polygonal",
     "discovered": true

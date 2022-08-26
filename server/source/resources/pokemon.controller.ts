@@ -39,19 +39,23 @@ export const addPokemonJson = (req: Request<{}, {}, Pokemon>, res: Response) => 
 };
 
 export const alterPokemonById = (req: Request, res: Response) => {
-    const id = parseInt(req.params.id);
-    const pokemonToChangeExists = isPokemonInPokedex(id);
-    if (isNaN(id)) res.status(400).json("Value provided must be of numerical value");
+    const paramId = parseInt(req.params.id);
+    const stringified = JSON.stringify(req.body);
+    const pokemonObject = jsonToSingleObject(stringified);
+    let pokemonToChangeIsTheSame = false;
+
+    if (paramId === pokemonObject.id) pokemonToChangeIsTheSame = true;
+    let pokemonToChangeExists = isPokemonInPokedex(paramId);
+
+    if (isNaN(paramId)) res.status(400).json("Value provided must be of numerical value");
     else if (pokemonToChangeExists == false)
-        res.status(404).json(`No Pokemon of id value ${id} found`);
+        res.status(404).json(`No Pokemon of id value ${paramId} found`);
     else {
-        const stringified = JSON.stringify(req.body);
-        const pokemonObject = jsonToSingleObject(stringified);
         const pokemonWithNewIdExists = isPokemonInPokedex(pokemonObject.id);
-        if (pokemonWithNewIdExists) {
+        if (pokemonToChangeIsTheSame === false && pokemonWithNewIdExists === true) {
             res.status(400).json(`A pokemon with the id ${pokemonObject.id} already exists`);
         } else {
-            replacePokemonInfo(id, pokemonObject);
+            replacePokemonInfo(paramId, pokemonObject);
             res.status(200).json(pokemonObject.name + " successfully edited");
         }
     }
