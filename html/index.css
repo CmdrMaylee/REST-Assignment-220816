@@ -11,8 +11,12 @@
     flex-direction: column;
 }
 
-.json-boxes > * {
-    margin: 0.5rem;
+.json-box > button {
+    width: 40%;
+}
+
+.json-box > * {
+    margin: 0.2rem;
 }
 
 .request-boxes {
@@ -32,6 +36,20 @@
     position: relative;
 }
 
+.server-up {
+    color: green;
+}
+
+.server-down {
+    color: red;
+}
+
+
+
 .flex {
     display: flex;
+}
+
+.space-around {
+    justify-content: space-around;
 }

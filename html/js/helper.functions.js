@@ -1,3 +1,16 @@
+function isApiRunning() {
+    const apiStatusText = document.querySelector("#api-status-txt");
+    xhttp.open("GET", url, false);
+    try {
+        xhttp.send();
+        apiStatusText.innerHTML = "ONLINE";
+        apiStatusText.classList = "server-up";
+    } catch {
+        apiStatusText.innerHTML = "OFFLINE";
+        apiStatusText.classList = "server-down";
+    }
+}
+
 function assemblePokeInfo(endpoint) {
     let bodyObject = {};
     if (endpoint === "post") {
@@ -19,13 +32,25 @@ function assemblePokeInfo(endpoint) {
     return bodyObject;
 }
 
-async function editPokemonSetVariables() {
-    const pokemonJson = await returnPokemonJson();
-    console.log(pokemonJson);
+function editPokemonSetVariables() {
+    const id = document.querySelector(".get-pokemon-id-input").value;
+    if (id === "") {
+        resTextField.innerHTML = "ID must be provided to edit a Pokemon";
+        resCodeTxtField.innerHTML = "400";
+    }
+
+    let pokemonJson = returnPokemonJson();
 
     const result = JSON.parse(pokemonJson);
-    document.querySelector(".put-pokemon-id-input").value = result.value;
-    document.querySelector(".put-pokemon-name-input").value = result.name;
-    document.querySelector(".put-pokemon-type-input").value = result.type;
-    document.querySelector(".put-pokemon-discovered-input").value = result.discovered;
+    if (result.id !== undefined) {
+        document.querySelector(".put-pokemon-id-input").value = result.id;
+        document.querySelector(".put-pokemon-name-input").value = result.name;
+        document.querySelector(".put-pokemon-type-input").value = result.type;
+        document.querySelector(".put-pokemon-discovered-input").value = result.discovered;
+    } else {
+        document.querySelector(".put-pokemon-id-input").value = "";
+        document.querySelector(".put-pokemon-name-input").value = "";
+        document.querySelector(".put-pokemon-type-input").value = "";
+        document.querySelector(".put-pokemon-discovered-input").value = "";
+    }
 }
