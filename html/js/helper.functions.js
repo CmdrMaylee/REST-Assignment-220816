@@ -29,10 +29,11 @@ function assemblePokeInfo(endpoint) {
         ).value;
         bodyObject.discovered = discovered === "true";
     } else if (endpoint === "put") {
-        const stringId = document.querySelector(
+        const stringPokeValue = document.querySelector(
             ".put-pokemon-pokevalue-input"
         ).value;
-        bodyObject.id = parseInt(stringId);
+        bodyObject.id = undefined;
+        bodyObject.pokeValue = parseInt(stringPokeValue);
         bodyObject.name = document.querySelector(
             ".put-pokemon-name-input"
         ).value;

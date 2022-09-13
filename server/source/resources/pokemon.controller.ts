@@ -22,6 +22,7 @@ export const getPokedex = (_: Request, res: Response) => {
 
 export const getPokemonById = (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
+    console.log(id);
     if (isNaN(id)) {
         res.status(400).json("Value provided must be of numerical value");
     } else if (isPokemonInPokedex(id) == true) {
@@ -55,7 +56,7 @@ export const alterPokemonById = (req: Request, res: Response) => {
     const stringified = JSON.stringify(req.body);
     const pokemonObject = jsonToSingleObject(stringified);
     let pokemonToChangeIsTheSame = false;
-
+    console.log(req.body);
     if (paramId === pokemonObject.id) pokemonToChangeIsTheSame = true;
     let pokemonToChangeExists = isPokemonInPokedex(paramId);
 
