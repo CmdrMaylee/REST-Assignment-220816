@@ -33,9 +33,7 @@ export const addPokemon = (pokemon: Pokemon) => {
         savePokedexToFile(pokedex);
         return true;
     } else {
-        console.log(
-            `Pokemon with id ${pokemon.id} already exists. Skipping...`
-        );
+        console.log(`Pokemon with id ${pokemon.id} already exists. Skipping...`);
         return false;
     }
 };

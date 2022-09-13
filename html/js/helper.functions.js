@@ -14,35 +14,19 @@ function isApiRunning() {
 function assemblePokeInfo(endpoint) {
     let bodyObject = {};
     if (endpoint === "post") {
-        const stringPokeValue = document.querySelector(
-            ".post-pokemon-pokevalue-input"
-        ).value;
+        const stringPokeValue = document.querySelector(".post-pokemon-pokevalue-input").value;
         bodyObject.pokeValue = parseInt(stringPokeValue);
-        bodyObject.name = document.querySelector(
-            ".post-pokemon-name-input"
-        ).value;
-        bodyObject.type = document.querySelector(
-            ".post-pokemon-type-input"
-        ).value;
-        const discovered = document.querySelector(
-            ".post-pokemon-discovered-input"
-        ).value;
+        bodyObject.name = document.querySelector(".post-pokemon-name-input").value;
+        bodyObject.type = document.querySelector(".post-pokemon-type-input").value;
+        const discovered = document.querySelector(".post-pokemon-discovered-input").value;
         bodyObject.discovered = discovered === "true";
     } else if (endpoint === "put") {
-        const stringPokeValue = document.querySelector(
-            ".put-pokemon-pokevalue-input"
-        ).value;
+        const stringPokeValue = document.querySelector(".put-pokemon-pokevalue-input").value;
         bodyObject.id = undefined;
         bodyObject.pokeValue = parseInt(stringPokeValue);
-        bodyObject.name = document.querySelector(
-            ".put-pokemon-name-input"
-        ).value;
-        bodyObject.type = document.querySelector(
-            ".put-pokemon-type-input"
-        ).value;
-        const discovered = document.querySelector(
-            ".put-pokemon-discovered-input"
-        ).value;
+        bodyObject.name = document.querySelector(".put-pokemon-name-input").value;
+        bodyObject.type = document.querySelector(".put-pokemon-type-input").value;
+        const discovered = document.querySelector(".put-pokemon-discovered-input").value;
         bodyObject.discovered = discovered === "true";
     }
 
@@ -60,12 +44,10 @@ function editPokemonSetVariables() {
 
     const result = JSON.parse(pokemonJson);
     if (result.id !== undefined) {
-        document.querySelector(".put-pokemon-pokevalue-input").value =
-            result.id;
+        document.querySelector(".put-pokemon-pokevalue-input").value = result.id;
         document.querySelector(".put-pokemon-name-input").value = result.name;
         document.querySelector(".put-pokemon-type-input").value = result.type;
-        document.querySelector(".put-pokemon-discovered-input").value =
-            result.discovered;
+        document.querySelector(".put-pokemon-discovered-input").value = result.discovered;
     } else {
         document.querySelector(".put-pokemon-pokevalue-input").value = "";
         document.querySelector(".put-pokemon-name-input").value = "";
