@@ -12,13 +12,13 @@ OPTIONAL: VSCode and the Live-Server extension.
 
 1. Git-clone the repository to a known location.
 
-2. Make sure the active directory is the "server" folder.
+2. Open the terminal/command prompt and set the active directory to the "server" folder.
 
 3. Run the command 'npm install' in order to install the required dependencies.
 
-4. From the same location, run the command 'npm run build', and then 'npm run start'.
+4. From the same location, run the command 'npm run dev'.
 
-5. Open up the index.html file from the "html" directory and test out the buttons and forms.
+5. Open the index.html file from the "html" directory and test out the buttons and forms.
 
 6. ALT. if step 5 fails, try opening it in a different browser. Alternatively, use VSCode and open the index.html file with live server. Make sure to close the connection after it has successfully opened to avoid the page refreshing with every change to the .json storage file!
 
