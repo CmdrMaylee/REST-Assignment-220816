@@ -7,9 +7,15 @@ export const logger = (req: Request, _: Response, next: NextFunction) => {
     next();
 };
 
-export const validatePokemon = (req: Request, res: Response, next: NextFunction) => {
+export const validatePokemon = (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     const joiSchema = Joi.object<Pokemon, true>({
         id: Joi.number().required(),
+
+        pokeValue: Joi.number().required(),
 
         name: Joi.string().required(),
 
