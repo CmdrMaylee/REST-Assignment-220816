@@ -14,10 +14,10 @@ function isApiRunning() {
 function assemblePokeInfo(endpoint) {
     let bodyObject = {};
     if (endpoint === "post") {
-        const stringId = document.querySelector(
+        const stringPokeValue = document.querySelector(
             ".post-pokemon-pokevalue-input"
         ).value;
-        bodyObject.id = parseInt(stringId);
+        bodyObject.pokeValue = parseInt(stringPokeValue);
         bodyObject.name = document.querySelector(
             ".post-pokemon-name-input"
         ).value;

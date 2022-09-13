@@ -43,7 +43,7 @@ export const addPokemon = (pokemon: Pokemon) => {
 export const replacePokemonInfo = (id: number, pokemon: Pokemon) => {
     pokedex.forEach((x) => {
         if (x.id === id) {
-            x.id = pokemon.id;
+            x.pokeValue = pokemon.pokeValue;
             x.name = pokemon.name;
             x.type = pokemon.type;
             x.discovered = pokemon.discovered;

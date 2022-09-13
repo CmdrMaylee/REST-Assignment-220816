@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import Joi from "joi";
 import { Pokemon } from "./resources/pokemon.model";
+import { isPokemonInPokedex } from "./resources/pokemon.utilityFunctions";
 
 export const logger = (req: Request, _: Response, next: NextFunction) => {
     console.log(req.method + " " + req.path);
@@ -13,7 +14,7 @@ export const validatePokemon = (
     next: NextFunction
 ) => {
     const joiSchema = Joi.object<Pokemon, true>({
-        id: Joi.number().required(),
+        id: Joi.number(),
 
         pokeValue: Joi.number().required(),
 

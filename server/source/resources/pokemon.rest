@@ -9,7 +9,7 @@ POST http://localhost:3000/api/pokemon/
 Content-Type: application/json
 
 {
-    "id": 1112,
+    "pokeValue": 12,
     "name": "name",
     "type": "type",
     "discovered": false
@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 
 ### DELETE a pokemon based on parameter ID
-DELETE http://localhost:3000/api/pokemon/137
+DELETE http://localhost:3000/api/pokemon/3
 
 ### POST add demo data
 POST http://localhost:3000/api/pokemon/demo
