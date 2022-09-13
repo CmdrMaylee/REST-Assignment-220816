@@ -44,15 +44,17 @@ function editPokemonSetVariables() {
 
     const result = JSON.parse(pokemonJson);
     if (result.id !== undefined) {
-        document.querySelector(".put-pokemon-pokevalue-input").value = result.id;
+        document.querySelector(".put-pokemon-pokevalue-input").value = result.pokeValue;
         document.querySelector(".put-pokemon-name-input").value = result.name;
         document.querySelector(".put-pokemon-type-input").value = result.type;
         document.querySelector(".put-pokemon-discovered-input").value = result.discovered;
+        document.querySelector(".put-pokemon-id-input").value = result.id;
     } else {
         document.querySelector(".put-pokemon-pokevalue-input").value = "";
         document.querySelector(".put-pokemon-name-input").value = "";
         document.querySelector(".put-pokemon-type-input").value = "";
         document.querySelector(".put-pokemon-discovered-input").value = "false";
+        document.querySelector(".put-pokemon-id-input").value = "";
     }
 }
 
@@ -61,6 +63,7 @@ function emptyPostForm() {
     document.querySelector(".post-pokemon-name-input").value = "";
     document.querySelector(".post-pokemon-type-input").value = "";
     document.querySelector(".post-pokemon-discovered-input").value = "false";
+    document.querySelector(".post-pokemon-id-input").value = "";
 }
 
 function emptyPutForm() {
@@ -68,4 +71,5 @@ function emptyPutForm() {
     document.querySelector(".put-pokemon-name-input").value = "";
     document.querySelector(".put-pokemon-type-input").value = "";
     document.querySelector(".put-pokemon-discovered-input").value = "false";
+    document.querySelector(".put-pokemon-id-input").value = "";
 }

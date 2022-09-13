@@ -21,7 +21,6 @@ export const getPokedex = (_: Request, res: Response) => {
 
 export const getPokemonById = (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
-    console.log(id);
     if (isNaN(id)) {
         res.status(400).json("Value provided must be of numerical value");
     } else if (isPokemonInPokedex(id) == true) {
@@ -43,6 +42,11 @@ export const addPokemonJson = (req: Request<{}, {}, Pokemon>, res: Response) => 
         res.status(201).json(pokemonObjectToAdd.name + " added successfully!");
     else res.status(303).json(`Pokemon of set ID(${pokemonObjectToAdd.id}) already exists`);
 };
+
+/*
+The if-statement on line 41-43 is completely redundant, as the method will keep incrementing the id counter until it reaches a value that isn't occupied.
+I'm keeping it in as a reminder of what response it would do in the case that an entry with an id already exists.
+*/
 
 export const alterPokemonById = (req: Request, res: Response) => {
     const paramId = parseInt(req.params.id);
@@ -74,7 +78,6 @@ export const alterPokemonById = (req: Request, res: Response) => {
 
 export const removePokemonById = (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
-    console.log(id);
     const pokemonExists = isPokemonInPokedex(id);
     if (isNaN(id)) res.status(400).json("Value provided must be of numerical value");
     else if (pokemonExists == false) res.status(404).json(`No Pokemon of id value ${id} found`);

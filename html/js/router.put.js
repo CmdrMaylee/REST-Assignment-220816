@@ -16,5 +16,4 @@ function alterPokemonPut() {
         }
     };
     xhttp.send(JSON.stringify(bodyObject));
-    // console.log(JSON.stringify(bodyObject));
 }
